@@ -1,0 +1,28 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+.pytest_cache/
+.ruff_cache/
+*.egg-info/
+
+# Data and models are versioned by DVC, not git
+/data/raw/*
+/data/processed/*
+/data/golden/*
+/models/*
+!**/.gitkeep
+
+# MLflow local tracking
+mlruns/
+mlartifacts/
+
+# Terraform
+.terraform/
+*.tfstate
+*.tfstate.*
+*.tfvars
+
+# Local env / OS
+.env
+.DS_Store

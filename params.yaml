@@ -1,0 +1,11 @@
+# Single source of settings for every pipeline stage (DVC tracks changes to these)
+data:
+  n_queries: 5000
+  seed: 42
+
+train:
+  model: logreg
+  C: 1.0
+
+evaluate:
+  golden_min_f1: 0.90   # gate: model is rejected below this on the golden set
