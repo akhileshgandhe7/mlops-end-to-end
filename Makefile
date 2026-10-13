@@ -1,4 +1,10 @@
-.PHONY: setup test lint data train evaluate serve
+.PHONY: whoami setup test lint data train evaluate serve
+
+whoami:    ## fail unless AWS points at the personal account (EXPECTED_AWS_ACCOUNT from .envrc)
+	@test -n "$(EXPECTED_AWS_ACCOUNT)" || { echo "STOP: EXPECTED_AWS_ACCOUNT unset - is direnv loaded?"; exit 1; }
+	@acct=$$(aws sts get-caller-identity --query Account --output text) && \
+	if [ "$$acct" = "$(EXPECTED_AWS_ACCOUNT)" ]; then echo "OK: personal account $$acct ($(AWS_PROFILE))"; \
+	else echo "STOP: AWS points at account $$acct, expected $(EXPECTED_AWS_ACCOUNT)"; exit 1; fi
 
 setup:     ## create .venv and install everything
 	uv sync --all-extras

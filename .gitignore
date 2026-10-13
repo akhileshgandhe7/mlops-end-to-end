@@ -6,12 +6,7 @@ __pycache__/
 .ruff_cache/
 *.egg-info/
 
-# Data and models are versioned by DVC, not git
-/data/raw/*
-/data/processed/*
-/data/golden/*
-/models/*
-!**/.gitkeep
+# Data and models: DVC adds its own .gitignore entries next to each tracked file
 
 # MLflow local tracking
 mlruns/
@@ -23,6 +18,7 @@ mlartifacts/
 *.tfstate.*
 *.tfvars
 
-# Local env / OS
+# Local env / OS (.envrc holds laptop-specific AWS profile and cert paths)
 .env
+.envrc
 .DS_Store
